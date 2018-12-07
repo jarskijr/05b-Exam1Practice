@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Jacob Jarski.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -102,8 +102,21 @@ def problem2a(circle, rectangle, window):
       :type rectangle: rg.Rectangle
       :type window:    rg.RoseWindow
     """
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+
+    line = rg.Line(toppoint(rectangle.corner_1.x, rectangle.corner_1.y, rectangle.corner_2.x, rectangle.corner_2.y), botpoint(rectangle.corner_1.x, rectangle.corner_1.y, rectangle.corner_2.x, rectangle.corner_2.y))
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    window.render()
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -111,7 +124,29 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # -------------------------------------------------------------------------
+def toppoint(point1x, point1y, point2x, point2y):
+    if point1x > point2x:
+        toppointx = point1x
+    else :
+        toppointx = point2x
+    if point1y < point2y:
+        toppointy = point1y
+    else:
+        toppointy = point2y
+    toppoint = rg.Point(toppointx, toppointy)
+    return toppoint
 
+def botpoint(point1x, point1y, point2x, point2y):
+    if point1x < point2x:
+        botpointx = point1x
+    else :
+        botpointx = point2x
+    if point1y > point2y:
+        botpointy = point1y
+    else:
+        botpointy = point2y
+    botpoint = rg.Point(botpointx, botpointy)
+    return botpoint
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
     print()
