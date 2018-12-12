@@ -217,6 +217,12 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # -------------------------------------------------------------------------
+    rect.attach_to(win)
+    for k in range (n):
+        rectangle = rg.Rectangle(rg.Point(rect.get_lower_left_corner().x - ( delta * (k)),
+                                          rect.get_lower_left_corner().y + ((k) * delta)) , rg.Point(rect.get_upper_right_corner().x + (delta * (k)), rect.get_upper_right_corner().y - ((k) * delta)))
+        rectangle.attach_to(win)
+    win.render()
 
 
 # -----------------------------------------------------------------------------
